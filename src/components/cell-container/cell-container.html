@@ -1,35 +1,8 @@
 <!-- Generated template for the CellContainerComponent component -->
-<ion-grid col-4 offset-4="">
-  <ion-row>
-    <ion-col col-4>
-      <cell></cell>
-    </ion-col>
-    <ion-col col-4>
-      <cell></cell>
-    </ion-col>
-    <ion-col col-4>
+<ion-grid col-4 offset-4>
+  <ion-row *ngFor="let i of Arr(num).fill(1)">
+    <ion-col col-4 *ngFor="let j of Arr(num).fill(1)">
       <cell></cell>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <cell></cell>
-    </ion-col>
-    <ion-col col-4>
-      <cell></cell>
-    </ion-col>
-    <ion-col col-4>
-      <cell></cell>
-    </ion-col>
-  </ion-row>  <ion-row>
-  <ion-col col-4>
-    <cell></cell>
-  </ion-col>
-  <ion-col col-4>
-    <cell></cell>
-  </ion-col>
-  <ion-col col-4>
-    <cell></cell>
-  </ion-col>
-</ion-row>
 </ion-grid>
