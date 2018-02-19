@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
 export class CellContainerComponent {
 
   text: string;
+  Arr = Array;
+  num: number = 3;
 
   constructor() {
     console.log('Hello CellContainerComponent Component');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 /**
  * Generated class for the CellComponent component.
@@ -13,10 +13,16 @@ import { Component } from '@angular/core';
 export class CellComponent {
 
   text: string;
+  temporaryHide: boolean = true;
 
   constructor() {
     console.log('Hello CellComponent Component');
     this.text = 'Hello World';
+  }
+
+  onClick() {
+    console.log('Cell Clicked!');
+    this.temporaryHide = false;
   }
 
 }
