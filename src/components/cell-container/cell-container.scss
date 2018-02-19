@@ -1,3 +1,13 @@
 cell-container {
+  ion-grid {
+    height: 90%;
+
+    ion-row {
+      height: 33.33%;
+    }
+    ion-col {
+      border: 1px solid black;
+    }
+  }
 
 }
