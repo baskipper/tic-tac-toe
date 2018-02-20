@@ -27,18 +27,22 @@ export class CellComponent {
 
   constructor() {
     console.log('Hello CellComponent Component');
-    // this.text = 'Hello World';
   }
 
   onClick() {
-  if(!this.hasBeenClicked) {
-    console.log('Cell Clicked! ', this.player, this.row, this.column);
-    this.value = this.player;
-    this.temporaryHide = false;
-    this.hasBeenClicked = true;
-    this.change.emit(); // need to emit row, col, and value
+    if(!this.hasBeenClicked) {
+      // console.log('Cell Clicked! ', this.player, this.row, this.column);
+      this.value = this.player;
+      this.temporaryHide = false;
+      this.hasBeenClicked = true;
+      this.change.emit({row: this.row, column: this.column, value: this.value}); // need to emit row, col, and value
+    }
   }
 
+  private checkForVictory() {
+
   }
+
+
 
 }
