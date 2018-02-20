@@ -52,6 +52,27 @@ export class CellContainerComponent {
   }
 
   private checkForRowVictory(): boolean {
+    // for(let i = 0; i < this.movesMade.length; i++)
+    // {
+    //   let firstCellValue = this.movesMade[i][0];
+    //   if(firstCellValue != this.EMPTY) {
+    //     for (let j = 0; j < this.movesMade[i].length; j++) {
+    //       // console.log('movesmade')
+    //       // console.log(this.movesMade[i][j])
+    //       if (this.movesMade[i][j] !== firstCellValue)
+    //       {
+    //         break;
+    //       }
+    //       else if(this.movesMade[i].length - 1 === j)
+    //       {
+    //         return true;
+    //       }
+    //     }
+    //   }
+    // }
+    return false;
+  }
+  private checkForColVictory(): boolean {
     for(let i = 0; i < this.movesMade.length; i++)
     {
       let firstCellValue = this.movesMade[i][0];
@@ -59,7 +80,7 @@ export class CellContainerComponent {
         for (let j = 0; j < this.movesMade[i].length; j++) {
           console.log('movesmade')
           console.log(this.movesMade[i][j])
-          if (this.movesMade[i][j] !== firstCellValue)
+          if (this.movesMade[j][i] !== firstCellValue)
           {
             break;
           }
@@ -70,9 +91,6 @@ export class CellContainerComponent {
         }
       }
     }
-    return false;
-  }
-  private checkForColVictory(): boolean {
     return false;
   }
   private checkForFallingVictory(): boolean {
