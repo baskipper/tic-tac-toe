@@ -11,12 +11,16 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   templateUrl: 'cell.html'
 })
 export class CellComponent {
-  @Input('player') player: string = 'empty';
+  @Input('player') player: string;
+  @Input('row') row: number;
+  @Input('column') column: number;
   @Output('change') change = new EventEmitter();
 
   value: string = 'empty';
+
   private X: string = 'X';
   private O: string = 'O';
+
   temporaryHide: boolean = true;
   hasBeenClicked: boolean = false;
 
@@ -28,11 +32,11 @@ export class CellComponent {
 
   onClick() {
   if(!this.hasBeenClicked) {
-    console.log('Cell Clicked! ', this.player);
+    console.log('Cell Clicked! ', this.player, this.row, this.column);
     this.value = this.player;
     this.temporaryHide = false;
     this.hasBeenClicked = true;
-    this.change.emit();
+    this.change.emit(); // need to emit row, col, and value
   }
 
   }
