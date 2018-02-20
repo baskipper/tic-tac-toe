@@ -1,4 +1,5 @@
 <!-- Generated template for the CellComponent component -->
 <div (click)="onClick()">
-  <ion-icon [hidden]="temporaryHide" name="md-close"></ion-icon>
+  <ion-icon [hidden]="value != X" name="md-close"></ion-icon>
+  <ion-icon [hidden]="value != O" name="md-radio-button-off"></ion-icon>
 </div>
