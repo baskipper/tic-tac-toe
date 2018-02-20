@@ -94,25 +94,46 @@ export class CellContainerComponent {
     return false;
   }
   private checkForFallingVictory(): boolean {
-    for(let i = 0; i < this.movesMade.length; i++)
-    {
-      let firstCellValue = this.movesMade[0][0];
-      if(firstCellValue != this.EMPTY) {
-          console.log('movesmade')
-          console.log(this.movesMade[i][i])
-          if (this.movesMade[i][i] !== firstCellValue)
-          {
-            break;
-          }
-          else if(this.movesMade.length - 1 === i)
-          {
-            return true;
-          }
-        }
-    }
+    // for(let i = 0; i < this.movesMade.length; i++)
+    // {
+    //   let firstCellValue = this.movesMade[0][0];
+    //   if(firstCellValue != this.EMPTY) {
+    //       console.log('movesmade')
+    //       console.log(this.movesMade[i][i])
+    //       if (this.movesMade[i][i] !== firstCellValue)
+    //       {
+    //         break;
+    //       }
+    //       else if(this.movesMade.length - 1 === i)
+    //       {
+    //         return true;
+    //       }
+    //     }
+    // }
     return false;
   }
   private checkForRisingVictory(): boolean {
+    let j = this.movesMade.length - 1;
+    for(let i = 0; i < this.movesMade.length; i++)
+    {
+      let firstCellValue = this.movesMade[0][2];
+      if(firstCellValue != this.EMPTY) {
+        console.log('movesmade')
+        console.log('i', i, 'j', j)
+        console.log(this.movesMade[i][j])
+        if (this.movesMade[i][j] !== firstCellValue)
+        {
+          j = this.movesMade.length -1;
+          break;
+        }
+        else if(this.movesMade.length - 1 === i)
+        {
+          return true;
+        }
+
+      }
+      j--;
+    }
     return false;
   }
 
