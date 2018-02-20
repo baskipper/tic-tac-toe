@@ -12,13 +12,21 @@ import { Component } from '@angular/core';
 })
 export class CellContainerComponent {
 
+  private X: string = 'X';
+  private O: string = 'O';
   text: string;
   Arr = Array;
   num: number = 3;
+  currentPlayer: string = this.X;
 
   constructor() {
     console.log('Hello CellContainerComponent Component');
     this.text = 'Hello World';
+  }
+
+  togglePlayer() {
+    console.log("Current player is ", this.currentPlayer);
+    this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
 
 }

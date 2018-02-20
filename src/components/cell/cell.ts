@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 /**
  * Generated class for the CellComponent component.
@@ -14,6 +14,9 @@ export class CellComponent {
 
   text: string;
   temporaryHide: boolean = true;
+  hasBeenClicked: boolean = false;
+  @Input('player') player: string = 'empty';
+  @Output('change') change = new EventEmitter();
 
   constructor() {
     console.log('Hello CellComponent Component');
@@ -21,8 +24,13 @@ export class CellComponent {
   }
 
   onClick() {
-    console.log('Cell Clicked!');
+  if(!this.hasBeenClicked) {
+    console.log('Cell Clicked! ', this.player);
     this.temporaryHide = false;
+    this.hasBeenClicked = true;
+    this.change.emit();
+  }
+
   }
 
 }
