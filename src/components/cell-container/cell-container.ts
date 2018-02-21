@@ -54,7 +54,8 @@ export class CellContainerComponent {
     if (this.numberOfMoves > 4){
       let victory = this.checkForVictory();
       if (!victory && this.numberOfMoves === 9) {
-        console.log("MEOW")
+        console.log("MEOW");
+        this.gameOver = true;
       }
       else if (victory)
       {
