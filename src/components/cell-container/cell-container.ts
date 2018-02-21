@@ -20,16 +20,29 @@ export class CellContainerComponent {
   text: string;
   Arr = Array;
   num: number = 3;
+
+  gameOver: boolean = false;
   currentPlayer: string = this.X;
 
   constructor() {
     // console.log('Hello CellContainerComponent Component');
     this.text = 'Hello World';
+    this.initMovesMade();
+    // console.log(this.movesMade);
+  }
+
+  private initMovesMade() {
     for(let i = 0; i < 3; i++)
     {
       this.movesMade[i] = [this.EMPTY, this.EMPTY, this.EMPTY]
     }
-    // console.log(this.movesMade);
+  }
+
+  resetGame() {
+    this.initMovesMade();
+    this.numberOfMoves = 0;
+    this.gameOver = false;
+    this.currentPlayer = this.X;
   }
 
   togglePlayer(eventArgs) {
@@ -38,19 +51,24 @@ export class CellContainerComponent {
     this.numberOfMoves++;
     // console.log('Number if moves is ', this.numberOfMoves);
     this.updateMoves(eventArgs);
-    // if (this.numberOfMoves > 5) {
-      if (!this.checkForVictory() && this.numberOfMoves === 9)
-      {
+    if (this.numberOfMoves > 4){
+      let victory = this.checkForVictory();
+      if (!victory && this.numberOfMoves === 9) {
         console.log("MEOW")
       }
-    // }
+      else if (victory)
+      {
+        this.gameOver = true;
+      }
+
+  }
     this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
 
   private checkForVictory() {
     if(this.checkForRowVictory() || this.checkForColVictory() || this.checkForFallingVictory() || this.checkForRisingVictory() )
     {
-      console.log('A Winner is ', this.currentPlayer)
+      console.log('A Winner is ', this.currentPlayer);
       return true;
     }
     return false;

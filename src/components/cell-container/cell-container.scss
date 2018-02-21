@@ -1,4 +1,7 @@
 cell-container {
+  .disableInput {
+    pointer-events: none;
+  }
   ion-grid {
     height: 90%;
 

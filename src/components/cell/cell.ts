@@ -38,11 +38,7 @@ export class CellComponent {
       this.change.emit({row: this.row, column: this.column, value: this.value}); // need to emit row, col, and value
     }
   }
-
-  private checkForVictory() {
-
+  resetState() {
+    console.log("resetting game cell")
   }
-
-
-
 }
