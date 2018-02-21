@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ComponentsModule } from '../components/components.module';
+import {CurrentGameStateService} from './current-game-state.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComponentsModule } from '../components/components.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CurrentGameStateService
   ]
 })
 export class AppModule {}

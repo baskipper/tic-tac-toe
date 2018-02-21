@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CurrentGameStateService} from '../../app/current-game-state.service';
 
 /**
  * Generated class for the CellContainerComponent component.
@@ -23,11 +24,13 @@ export class CellContainerComponent {
 
   gameOver: boolean = false;
   currentPlayer: string = this.X;
+  gameState: CurrentGameStateService
 
-  constructor() {
+  constructor(gameState: CurrentGameStateService) {
     // console.log('Hello CellContainerComponent Component');
     this.text = 'Hello World';
     this.initMovesMade();
+    this.gameState = gameState;
     // console.log(this.movesMade);
   }
 
@@ -52,7 +55,7 @@ export class CellContainerComponent {
     // console.log('Number if moves is ', this.numberOfMoves);
     this.updateMoves(eventArgs);
     if (this.numberOfMoves > 4){
-      let victory = this.checkForVictory();
+      let victory = this.gameState.checkForVictory(this.movesMade);
       if (!victory && this.numberOfMoves === 9) {
         console.log("MEOW");
         this.gameOver = true;
@@ -66,99 +69,7 @@ export class CellContainerComponent {
     this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
 
-  private checkForVictory() {
-    if(this.checkForRowVictory() || this.checkForColVictory() || this.checkForFallingVictory() || this.checkForRisingVictory() )
-    {
-      console.log('A Winner is ', this.currentPlayer);
-      return true;
-    }
-    return false;
-  }
 
-  private checkForRowVictory(): boolean {
-    for(let i = 0; i < this.movesMade.length; i++)
-    {
-      let firstCellValue = this.movesMade[i][0];
-      if(firstCellValue != this.EMPTY) {
-        for (let j = 0; j < this.movesMade[i].length; j++) {
-          // console.log('movesmade')
-          // console.log(this.movesMade[i][j])
-          if (this.movesMade[i][j] !== firstCellValue)
-          {
-            break;
-          }
-          else if(this.movesMade[i].length - 1 === j)
-          {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  private checkForColVictory(): boolean {
-    for(let i = 0; i < this.movesMade.length; i++) {
-      let firstCellValue = this.movesMade[0][i];
-      if (firstCellValue != this.EMPTY) {
-        for (let j = 0; j < this.movesMade[i].length; j++) {
-
-          // console.log('movesmade')
-          // console.log(this.movesMade[j][i])
-          if (this.movesMade[j][i] !== firstCellValue) {
-            break;
-          }
-          else if (this.movesMade[i].length - 1 === j) {
-            return true;
-          }
-        }
-
-      }
-    }
-    return false;
-  }
-  private checkForFallingVictory(): boolean {
-    for(let i = 0; i < this.movesMade.length; i++)
-    {
-      let firstCellValue = this.movesMade[0][0];
-      if(firstCellValue != this.EMPTY) {
-          // console.log('movesmade')
-          // console.log(this.movesMade[i][i])
-          if (this.movesMade[i][i] !== firstCellValue)
-          {
-            break;
-          }
-          else if(this.movesMade.length - 1 === i)
-          {
-            return true;
-          }
-        }
-    }
-    return false;
-  }
-  private checkForRisingVictory(): boolean {
-    let j = this.movesMade.length - 1;
-    for(let i = 0; i < this.movesMade.length; i++)
-    {
-      let firstCellValue = this.movesMade[0][2];
-      if(firstCellValue != this.EMPTY) {
-        // console.log('movesmade')
-        // console.log('i', i, 'j', j)
-        // console.log(this.movesMade[i][j])
-        if (this.movesMade[i][j] !== firstCellValue)
-        {
-          j = this.movesMade.length -1;
-          break;
-        }
-        else if(this.movesMade.length - 1 === i)
-        {
-          return true;
-        }
-
-      }
-      j--;
-    }
-    return false;
-  }
 
   private updateMoves(eventArgs) {
     let row = eventArgs.row;

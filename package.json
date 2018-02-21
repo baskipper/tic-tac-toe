@@ -36,6 +36,8 @@
     "typescript": "2.4.2",
     "zone.js": "0.8.18"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@angular/cli": "^1.7.0"
+  },
   "description": "An Ionic project"
 }
