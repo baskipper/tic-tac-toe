@@ -3,7 +3,16 @@ div {
   height: 100%;
   width: 100%;
 }
-  ion-icon {
-    font-size: 10em;
+
+    button.button {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      .button-effect {
+        display: none;
+      }
+      ion-icon {
+        font-size: 10em;
+      }
   }
 }
