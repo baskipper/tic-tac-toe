@@ -5,7 +5,7 @@
 <ion-grid [ngClass]="{disableInput: gameOver}" col-12 col-md-4 offset-md-4 >
   <ion-row *ngFor="let i of Arr(num).fill(1); let row = index">
     <ion-col col-4 *ngFor="let j of Arr(num).fill(1); let col = index ">
-      <cell [row]="row" [column]="col" [player]="currentPlayer" (change)="togglePlayer($event)"></cell>
+      <cell [row]="row" [column]="col" [player]="currentPlayer" [reset]="gameOver" (change)="togglePlayer($event)"></cell>
     </ion-col>
   </ion-row>
 </ion-grid>

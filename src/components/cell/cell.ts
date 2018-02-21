@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 
 /**
  * Generated class for the CellComponent component.
@@ -14,6 +14,7 @@ export class CellComponent {
   @Input('player') player: string;
   @Input('row') row: number;
   @Input('column') column: number;
+  @Input('reset') reset: boolean;
   @Output('change') change = new EventEmitter();
 
   value: string = 'empty';
@@ -27,6 +28,16 @@ export class CellComponent {
 
   constructor() {
     console.log('Hello CellComponent Component');
+  }
+
+  ngOnChanges(changes: SimpleChanges)
+  {
+    if(changes.reset && changes.reset.previousValue && !changes.reset.currentValue)
+    {
+      this.temporaryHide = true;
+      this.hasBeenClicked = false;
+      this.value = 'empty';
+    }
   }
 
   onClick() {
