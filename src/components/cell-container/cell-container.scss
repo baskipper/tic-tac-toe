@@ -7,47 +7,47 @@ cell-container {
     }
     ion-row:nth-child(1) {
       ion-col:nth-child(1) {
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
+        border-right: 3px solid gray;
+        border-bottom: 3px solid gray;
       }
       ion-col:nth-child(2) {
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
+        border-right: 3px solid gray;
+        border-bottom: 3px solid gray;
+        border-left: 3px solid gray;
       }
       ion-col:nth-child(3) {
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
+        border-bottom: 3px solid gray;
+        border-left: 3px solid gray;
       }
     }
     ion-row:nth-child(2) {
       ion-col:nth-child(1) {
-        border-top: 1px solid black;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
+        border-top: 3px solid gray;
+        border-right: 3px solid gray;
+        border-bottom: 3px solid gray;
       }
       ion-col:nth-child(2) {
-        border: 1px solid black;
+        border: 3px solid gray;
       }
       ion-col:nth-child(3) {
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-        border-top: 1px solid black;
+        border-bottom: 3px solid gray;
+        border-left: 3px solid gray;
+        border-top: 3px solid gray;
       }
     }
     ion-row:nth-child(3) {
       ion-col:nth-child(1) {
-        border-top: 1px solid black;
-        border-right: 1px solid black;
+        border-top: 3px solid gray;
+        border-right: 3px solid gray;
       }
       ion-col:nth-child(2) {
-        border-right: 1px solid black;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
+        border-right: 3px solid gray;
+        border-top: 3px solid gray;
+        border-left: 3px solid gray;
       }
       ion-col:nth-child(3) {
-        border-left: 1px solid black;
-        border-top: 1px solid black;
+        border-left: 3px solid gray;
+        border-top: 3px solid gray;
       }
     }
   }

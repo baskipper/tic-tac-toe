@@ -1,5 +1,5 @@
 <!-- Generated template for the CellContainerComponent component -->
-<ion-grid id="gameBoard" col-12 col-md-4 offset-md-4 >
+<ion-grid col-12 col-md-4 offset-md-4 >
   <ion-row *ngFor="let i of Arr(num).fill(1); let row = index">
     <ion-col col-4 *ngFor="let j of Arr(num).fill(1); let col = index ">
       <cell [row]="row" [column]="col" [player]="currentPlayer" (change)="togglePlayer($event)"></cell>
