@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CurrentGameStateService} from '../../app/current-game-state.service';
+import {CurrentGameStateService} from '../../providers/current-game-state.service';
 import {AlertController} from 'ionic-angular';
 
 /**

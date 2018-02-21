@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ComponentsModule } from '../components/components.module';
-import {CurrentGameStateService} from './current-game-state.service';
+import {CurrentGameStateService} from '../providers/current-game-state.service';
 
 @NgModule({
   declarations: [
