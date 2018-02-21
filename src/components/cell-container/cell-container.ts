@@ -39,7 +39,10 @@ export class CellContainerComponent {
     // console.log('Number if moves is ', this.numberOfMoves);
     this.updateMoves(eventArgs);
     // if (this.numberOfMoves > 5) {
-      this.checkForVictory();
+      if (!this.checkForVictory() && this.numberOfMoves === 9)
+      {
+        console.log("MEOW")
+      }
     // }
     this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
@@ -48,7 +51,9 @@ export class CellContainerComponent {
     if(this.checkForRowVictory() || this.checkForColVictory() || this.checkForFallingVictory() || this.checkForRisingVictory() )
     {
       console.log('A Winner is ', this.currentPlayer)
+      return true;
     }
+    return false;
   }
 
   private checkForRowVictory(): boolean {
