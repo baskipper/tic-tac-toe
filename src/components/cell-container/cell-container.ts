@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {CurrentGameStateService} from '../../app/current-game-state.service';
+import {AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the CellContainerComponent component.
@@ -24,13 +25,15 @@ export class CellContainerComponent {
 
   gameOver: boolean = false;
   currentPlayer: string = this.X;
-  gameState: CurrentGameStateService
+  // gameState: CurrentGameStateService;
+  // alertCtrl: AlertController;
 
-  constructor(gameState: CurrentGameStateService) {
+  constructor(private gameState: CurrentGameStateService, private alertCtrl: AlertController) {
     // console.log('Hello CellContainerComponent Component');
     this.text = 'Hello World';
     this.initMovesMade();
-    this.gameState = gameState;
+    // this.gameState = gameState;
+    // this.alertCtrl = alertCtrl;
     // console.log(this.movesMade);
   }
 
@@ -63,13 +66,23 @@ export class CellContainerComponent {
       else if (victory)
       {
         this.gameOver = true;
+        let message = this.currentPlayer === this.X ? "Victory through superiority" : "We've lost the battle, but not the war";
+        this.showGameOver(message);
       }
 
   }
     this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
 
+    private showGameOver(message) {
+        let alert = this.alertCtrl.create({
+          title: 'Game Over',
+          subTitle: message,
+          buttons: ['OK']
+        });
+        alert.present();
 
+    }
 
   private updateMoves(eventArgs) {
     let row = eventArgs.row;
