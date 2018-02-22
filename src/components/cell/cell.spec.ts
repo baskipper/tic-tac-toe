@@ -10,6 +10,7 @@ import {
   StatusBarMock,
   SplashScreenMock
 } from '../../../test-config/mocks-ionic';
+import {SimpleChange} from '@angular/core';
 
 describe('CellComponent Component', () => {
   let fixture;
@@ -66,8 +67,30 @@ describe('CellComponent Component', () => {
     })
   })
 
-  // it('should have two pages', () => {
-  //   expect(component.pages.length).toBe(2);
-  // });
+    describe('ngChanges event',() => {
+      it('should set temporaryHide = true', () => {
+        component.ngOnChanges({
+          reset: new SimpleChange(true, false, false)
+        });
+        fixture.detectChanges();
+        expect(component.temporaryHide).toEqual(true);
+      });
+      it('should set hasBeenClicked = false', () => {
+        component.ngOnChanges({
+          reset: new SimpleChange(true, false, false)
+        });
+        fixture.detectChanges();
+        expect(component.hasBeenClicked).toEqual(false);
+      });
+      it('should set value = empty', () => {
+        component.ngOnChanges({
+          reset: new SimpleChange(true, false, false)
+        });
+        fixture.detectChanges();
+        expect(component.value).toEqual('empty');
+      });
+
+  })
+
 
 });
