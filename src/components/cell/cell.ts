@@ -41,6 +41,7 @@ export class CellComponent {
   }
 
   onClick() {
+    console.log("I've been clicked!")
     if(!this.hasBeenClicked) {
       // console.log('Cell Clicked! ', this.player, this.row, this.column);
       this.value = this.player;
@@ -49,7 +50,5 @@ export class CellComponent {
       this.change.emit({row: this.row, column: this.column, value: this.value}); // need to emit row, col, and value
     }
   }
-  resetState() {
-    console.log("resetting game cell")
-  }
+
 }
