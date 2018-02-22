@@ -7,12 +7,7 @@ export class CurrentGameStateService {
   constructor() { }
 
   checkForVictory(movesMade) {
-    if(this.checkForRowVictory(movesMade) || this.checkForColVictory(movesMade) || this.checkForFallingVictory(movesMade) || this.checkForRisingVictory(movesMade) )
-    {
-      // console.log('A Winner is ', this.currentPlayer);
-      return true;
-    }
-    return false;
+    return (this.checkForRowVictory(movesMade) || this.checkForColVictory(movesMade) || this.checkForFallingVictory(movesMade) || this.checkForRisingVictory(movesMade) )
   }
 
   private checkForRowVictory(movesMade): boolean {
@@ -21,8 +16,7 @@ export class CurrentGameStateService {
       let firstCellValue = movesMade[i][0];
       if(firstCellValue != this.EMPTY) {
         for (let j = 0; j < movesMade[i].length; j++) {
-          // console.log('movesmade')
-          // console.log(movesMade[i][j])
+
           if (movesMade[i][j] !== firstCellValue)
           {
             break;
