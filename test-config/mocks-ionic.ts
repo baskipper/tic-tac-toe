@@ -66,6 +66,12 @@ public getActiveElement(): any {
 }
 }
 
+export class CurrentGameStateServiceMock {
+  checkForVictory() {
+    return true;
+  }
+}
+
 export class StatusBarMock extends StatusBar {
   styleDefault() {
     return;

@@ -8,10 +8,12 @@ import { CellContainerComponent } from './cell-container';
 import {
   PlatformMock,
   StatusBarMock,
-  SplashScreenMock
+  SplashScreenMock,
+  CurrentGameStateServiceMock
 } from '../../../test-config/mocks-ionic';
 import {CUSTOM_ELEMENTS_SCHEMA, SimpleChange} from '@angular/core';
 import {CellComponent} from '../cell/cell';
+import {CurrentGameStateService} from '../../providers/current-game-state.service';
 
 describe('CellComponent Component', () => {
   let fixture;
@@ -26,7 +28,8 @@ describe('CellComponent Component', () => {
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
-        { provide: Platform, useClass: PlatformMock }
+        { provide: Platform, useClass: PlatformMock },
+        { provide: CurrentGameStateService, useClass: CurrentGameStateServiceMock}
       ]
     })
   }));
