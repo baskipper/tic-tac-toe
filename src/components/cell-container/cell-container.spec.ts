@@ -42,12 +42,8 @@ describe('CellComponent Component', () => {
   });
 
   it('should be created', () => {
-
     expect(component instanceof CellContainerComponent).toBe(true);
   });
-  //
-  // this.gameOver = false;
-  // this.currentPlayer = this.X;
 
   describe('resetGame method', () => {
     it('should set numberOfMoves = 0', () => {
@@ -89,15 +85,6 @@ describe('CellComponent Component', () => {
       component.togglePlayer(eventArgs);
       component.togglePlayer(eventArgs);
       expect(component.gameOver).toBe(true);
-    });
-    it('should do something', () => {
-
-    });
-    it('should do something', () => {
-
-    });
-    it('should do something', () => {
-
     });
   });
 
