@@ -1,10 +1,9 @@
 import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 
 /**
- * Generated class for the CellComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+* This component represents a cell in the tic-tac-toe board. It can hold a state of
+ * X, O, or empty.
+ * @Component cell
  */
 @Component({
   selector: 'cell',
@@ -30,6 +29,12 @@ export class CellComponent {
     console.log('Hello CellComponent Component');
   }
 
+  /*
+  * This method keeps track of the gameOver variable in CellContainer, and resets
+  * the state of the cell whenever a new game is created.
+  * @method ngOnChanges
+  * @param changes Contains the changes to the gameOver value
+  * */
   ngOnChanges(changes: SimpleChanges)
   {
     if(changes.reset && changes.reset.previousValue && !changes.reset.currentValue)
@@ -40,6 +45,13 @@ export class CellComponent {
     }
   }
 
+  /**
+   * This method sets the current value of the cell on click, and displays
+   * the proper icon on the game board.
+   * @method onClick
+   *
+   */
+
   onClick() {
     if(!this.hasBeenClicked) {
       this.value = this.player;
@@ -48,5 +60,4 @@ export class CellComponent {
       this.change.emit({row: this.row, column: this.column, value: this.value});
     }
   }
-
 }
