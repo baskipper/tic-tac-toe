@@ -3,10 +3,9 @@ import {CurrentGameStateService} from '../../providers/current-game-state.servic
 import {AlertController} from 'ionic-angular';
 
 /**
- * Generated class for the CellContainerComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+  This component contains the cells that make up the tic-tac-toe game. It primarily
+ keeps track of the moves made, and who the current player is.
+ @Component cell-container
  */
 @Component({
   selector: 'cell-container',
@@ -14,12 +13,12 @@ import {AlertController} from 'ionic-angular';
 })
 export class CellContainerComponent {
 
+  //Declaration of Variables
   private X: string = 'X';
   private O: string = 'O';
   private EMPTY: string = 'empty';
   private numberOfMoves: number = 0;
   private movesMade = [];
-  text: string;
   Arr = Array;
   num: number = 3;
 
@@ -28,7 +27,6 @@ export class CellContainerComponent {
 
   constructor(private gameState: CurrentGameStateService, private alertCtrl: AlertController) {
 
-    this.text = 'Hello World';
     this.initMovesMade();
   }
 
@@ -39,6 +37,11 @@ export class CellContainerComponent {
     }
   }
 
+  /**
+  *
+   * This method resets all variables to their initial state whenever the game is reset.
+   * @method resetGame
+  * */
   resetGame() {
     this.initMovesMade();
     this.numberOfMoves = 0;
@@ -46,11 +49,16 @@ export class CellContainerComponent {
     this.currentPlayer = this.X;
   }
 
-  togglePlayer(eventArgs) {
-    // console.log("Current player is ", this.currentPlayer);
+  /**
+   * This method toggles the current player, and keeps track of the current state of
+   * the game.
+   *
+   * @method togglePlayer
+   * @param eventArgs The row, column, and value of the most recent move.
+   */
 
+  togglePlayer(eventArgs) {
     this.numberOfMoves++;
-    // console.log('Number if moves is ', this.numberOfMoves);
     this.updateMoves(eventArgs);
     if (this.numberOfMoves > 4){
       let victory = this.gameState.checkForVictory(this.movesMade);
@@ -71,6 +79,11 @@ export class CellContainerComponent {
     this.currentPlayer = this.currentPlayer === this.X ? this.O : this.X;
   }
 
+  /*
+  * This method pops up a message at the end of the game, depending on who won
+  * or lost
+  * @method showGameOver
+  * */
     private showGameOver(message) {
         let alert = this.alertCtrl.create({
           title: 'Game Over',
@@ -81,12 +94,16 @@ export class CellContainerComponent {
 
     }
 
+    /*
+    * This simple method updates the tracker with the most recent move.
+    * @method updateMoves
+    * @param eventArgs The row, column, and value of the most recent move.
+    * */
   private updateMoves(eventArgs) {
     let row = eventArgs.row;
     let col = eventArgs.column;
     let value = eventArgs.value;
     this.movesMade[row][col] = value;
-    // console.log(this.movesMade)
   }
 
 }
