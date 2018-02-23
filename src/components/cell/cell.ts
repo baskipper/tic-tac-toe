@@ -26,7 +26,6 @@ export class CellComponent {
 
 
   constructor() {
-    console.log('Hello CellComponent Component');
   }
 
   /*
