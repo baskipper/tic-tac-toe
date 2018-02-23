@@ -8,9 +8,11 @@ import { CellComponent } from './cell';
 import {
   PlatformMock,
   StatusBarMock,
-  SplashScreenMock
+  SplashScreenMock,
+  CurrentGameStateServiceMock
 } from '../../../test-config/mocks-ionic';
 import {SimpleChange} from '@angular/core';
+import {CurrentGameStateService} from '../../providers/current-game-state.service';
 
 describe('CellComponent Component', () => {
   let fixture;
@@ -25,7 +27,8 @@ describe('CellComponent Component', () => {
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
-        { provide: Platform, useClass: PlatformMock }
+        { provide: Platform, useClass: PlatformMock },
+        { provide: CurrentGameStateService, useClass: CurrentGameStateServiceMock}
       ]
     })
   }));
@@ -89,6 +92,15 @@ describe('CellComponent Component', () => {
         fixture.detectChanges();
         expect(component.value).toEqual('empty');
       });
+      it('should set iWin to true if it is in the winning combo', () => {
+        component.row = 0;
+        component.column = 1;
+        component.ngOnChanges({
+          reset: new SimpleChange(false, true, false)
+        });
+        fixture.detectChanges();
+        expect(component.iWin).toBe(true);
+      })
 
   })
 

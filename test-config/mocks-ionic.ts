@@ -78,6 +78,14 @@ export class CurrentGameStateServiceMock {
   checkForVictory() {
     return true;
   }
+
+  resetWinningCombo() {
+    return true
+  }
+
+  getWinningCombo() {
+    return [[0, 0], [0, 1], [0, 2]]
+  }
 }
 
 export class StatusBarMock extends StatusBar {
