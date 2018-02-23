@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
+import {CurrentGameStateService} from '../../providers/current-game-state.service';
 
 /**
 * This component represents a cell in the tic-tac-toe board. It can hold a state of
@@ -23,9 +24,10 @@ export class CellComponent {
 
   temporaryHide: boolean = true;
   hasBeenClicked: boolean = false;
+  iWin: boolean = false;
 
 
-  constructor() {
+  constructor(private gameState: CurrentGameStateService,) {
   }
 
   /*
@@ -36,11 +38,27 @@ export class CellComponent {
   * */
   ngOnChanges(changes: SimpleChanges)
   {
-    if(changes.reset && changes.reset.previousValue && !changes.reset.currentValue)
-    {
-      this.temporaryHide = true;
-      this.hasBeenClicked = false;
-      this.value = 'empty';
+    if(changes.reset) {
+      if ( changes.reset.previousValue && !changes.reset.currentValue) {
+        this.temporaryHide = true;
+        this.hasBeenClicked = false;
+        this.value = 'empty';
+        this.gameState.resetWinningCombo();
+        this.iWin = false;
+      }
+      else if ( !changes.reset.previousValue && changes.reset.currentValue)
+      {
+        let winningCombo = this.gameState.getWinningCombo();
+        for(let i in winningCombo)
+        {
+          if (this.row === winningCombo[i][0] && this.column === winningCombo[i][1])
+          {
+            this.iWin = true;
+           console.log("I am row ", this.row, " and column ", this.column, " and I am the winner")
+
+          }
+        }
+      }
     }
   }
 

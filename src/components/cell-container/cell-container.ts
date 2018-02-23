@@ -95,7 +95,7 @@ export class CellContainerComponent {
     }
 
     /*
-    * This simple method updates the tracker with the most recent move.
+    * This simple method updates the tracker
     * @method updateMoves
     * @param eventArgs The row, column, and value of the most recent move.
     * */

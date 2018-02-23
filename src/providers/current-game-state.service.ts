@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
 
 /**
@@ -8,6 +9,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CurrentGameStateService {
   private EMPTY: string = 'empty';
+  private winningCombo = [];
 
   constructor() { }
 
@@ -22,6 +24,14 @@ export class CurrentGameStateService {
     return (this.checkForRowVictory(movesMade) || this.checkForColVictory(movesMade) || this.checkForFallingVictory(movesMade) || this.checkForRisingVictory(movesMade) )
   }
 
+  getWinningCombo() {
+     return this.winningCombo;
+  }
+
+  resetWinningCombo() {
+    this.winningCombo = [];
+  }
+
   /**
    * This method checks the game state for three in a row
    *
@@ -33,15 +43,18 @@ export class CurrentGameStateService {
     for(let i = 0; i < movesMade.length; i++)
     {
       let firstCellValue = movesMade[i][0];
+      let test = [];
       if(firstCellValue != this.EMPTY) {
         for (let j = 0; j < movesMade[i].length; j++) {
-
+          this.winningCombo.push([i,j]);
           if (movesMade[i][j] !== firstCellValue)
           {
+            this.winningCombo = [];
             break;
           }
           else if(movesMade[i].length - 1 === j)
           {
+            console.log('the winning combo should be ', this.winningCombo);
             return true;
           }
         }
