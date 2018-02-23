@@ -43,7 +43,6 @@ export class CurrentGameStateService {
     for(let i = 0; i < movesMade.length; i++)
     {
       let firstCellValue = movesMade[i][0];
-      let test = [];
       if(firstCellValue != this.EMPTY) {
         for (let j = 0; j < movesMade[i].length; j++) {
           this.winningCombo.push([i,j]);
@@ -54,7 +53,6 @@ export class CurrentGameStateService {
           }
           else if(movesMade[i].length - 1 === j)
           {
-            console.log('the winning combo should be ', this.winningCombo);
             return true;
           }
         }
@@ -75,7 +73,9 @@ export class CurrentGameStateService {
       let firstCellValue = movesMade[0][i];
       if (firstCellValue != this.EMPTY) {
         for (let j = 0; j < movesMade[i].length; j++) {
+          this.winningCombo.push([j,i]);
           if (movesMade[j][i] !== firstCellValue) {
+            this.winningCombo = [];
             break;
           }
           else if (movesMade[i].length - 1 === j) {
@@ -100,8 +100,10 @@ export class CurrentGameStateService {
     {
       let firstCellValue = movesMade[0][0];
       if(firstCellValue != this.EMPTY) {
+        this.winningCombo.push([i,i]);
         if (movesMade[i][i] !== firstCellValue)
         {
+          this.winningCombo = [];
           break;
         }
         else if(movesMade.length - 1 === i)
@@ -126,8 +128,10 @@ export class CurrentGameStateService {
     {
       let firstCellValue = movesMade[0][2];
       if(firstCellValue != this.EMPTY) {
+        this.winningCombo.push([i,j]);
         if (movesMade[i][j] !== firstCellValue)
         {
+          this.winningCombo = [];
           j = movesMade.length -1;
           break;
         }

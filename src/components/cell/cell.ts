@@ -46,7 +46,7 @@ export class CellComponent {
         this.gameState.resetWinningCombo();
         this.iWin = false;
       }
-      else if ( !changes.reset.previousValue && changes.reset.currentValue)
+      else if (!changes.reset.previousValue && changes.reset.currentValue)
       {
         let winningCombo = this.gameState.getWinningCombo();
         for(let i in winningCombo)
@@ -54,8 +54,6 @@ export class CellComponent {
           if (this.row === winningCombo[i][0] && this.column === winningCombo[i][1])
           {
             this.iWin = true;
-           console.log("I am row ", this.row, " and column ", this.column, " and I am the winner")
-
           }
         }
       }
