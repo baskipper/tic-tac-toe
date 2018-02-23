@@ -66,6 +66,14 @@ public getActiveElement(): any {
 }
 }
 
+export class AlertControllerMock {
+  create() {
+    return {
+      present: () => true
+    };
+  }
+}
+
 export class CurrentGameStateServiceMock {
   checkForVictory() {
     return true;

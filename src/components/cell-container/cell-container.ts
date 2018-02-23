@@ -25,16 +25,11 @@ export class CellContainerComponent {
 
   gameOver: boolean = false;
   currentPlayer: string = this.X;
-  // gameState: CurrentGameStateService;
-  // alertCtrl: AlertController;
 
   constructor(private gameState: CurrentGameStateService, private alertCtrl: AlertController) {
-    // console.log('Hello CellContainerComponent Component');
+
     this.text = 'Hello World';
     this.initMovesMade();
-    // this.gameState = gameState;
-    // this.alertCtrl = alertCtrl;
-    // console.log(this.movesMade);
   }
 
   private initMovesMade() {
@@ -62,6 +57,8 @@ export class CellContainerComponent {
       if (!victory && this.numberOfMoves === 9) {
         console.log("MEOW");
         this.gameOver = true;
+        let message = "MEOW";
+        this.showGameOver(message);
       }
       else if (victory)
       {
