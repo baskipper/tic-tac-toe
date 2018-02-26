@@ -13,11 +13,13 @@ NodeJS 8.9.0 or higher
 
 Ionic 3.19.0 or higher
 
+Cordova 8.0.0 or higher for deployment to an android deviece
+
 # Local installation instructions
 Clone the repo, and run `npm install`. Afterwards, run `ionic serve` to start up a local instance of the app.
 
 # Deploying to device for testing purposes.
-Attach an android device, and ensure that it has debugging mode enabled. Then, run `ionic cordova run android --device`. 
+Attach an android device, and ensure that it has debugging mode enabled. Then, run `ionic cordova platform add android`, followed by  `ionic cordova run android --device`. 
 
 # Testing
 Run `npm test` to run all unit tests.
