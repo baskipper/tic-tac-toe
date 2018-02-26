@@ -19,9 +19,6 @@ export class CellComponent {
 
   value: string = 'empty';
 
-  private X: string = 'X';
-  private O: string = 'O';
-
   temporaryHide: boolean = true;
   hasBeenClicked: boolean = false;
   iWin: boolean = false;
