@@ -13,7 +13,7 @@ NodeJS 8.9.0 or higher
 
 Ionic 3.19.0 or higher
 
-Cordova 8.0.0 or higher for deployment to an android deviece
+Cordova 8.0.0 or higher for deployment to an android device
 
 # Local installation instructions
 Clone the repo, and run `npm install`. Afterwards, run `ionic serve` to start up a local instance of the app.
